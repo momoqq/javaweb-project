@@ -1,0 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div class="footer">
+    <div class="footer-content">
+        <p>&copy; ${year} 博客空间 - 分享你的想法与故事</p>
+        <div class="footer-links">
+            <a href="about.jsp" class="footer-link">关于我们</a>
+            <a href="terms.jsp" class="footer-link">使用条款</a>
+            <a href="privacy.jsp" class="footer-link">隐私政策</a>
+        </div>
+    </div>
+</div>
