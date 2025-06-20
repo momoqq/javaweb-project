@@ -24,8 +24,26 @@ public class BlogServlet extends HttpServlet {
             return;
         }
 
-        // 获取所有博客文章
-        List<Blog> blogs = blogDAO.getAllBlogs();
+        // 获取操作类型和搜索参数
+        String action = request.getParameter("action");
+        String searchKeyword = request.getParameter("search");
+        List<Blog> blogs;
+
+        // 处理归档页面请求
+        if ("archive".equals(action)) {
+            blogs = blogDAO.getBlogsByDateAsc();
+            request.setAttribute("blogs", blogs);
+            request.getRequestDispatcher("archive.jsp").forward(request, response);
+            return;
+        }
+
+        // 处理常规博客列表和搜索请求
+        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+            blogs = blogDAO.searchBlogs(searchKeyword);
+            request.setAttribute("searchKeyword", searchKeyword);
+        } else {
+            blogs = blogDAO.getAllBlogs();
+        }
         request.setAttribute("blogs", blogs);
 
         // 转发到博客列表页面

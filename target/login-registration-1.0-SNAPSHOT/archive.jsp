@@ -4,31 +4,21 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>博客列表</title>
+    <title>博客归档</title>
     <link rel="stylesheet" href="css/blog.css">
 </head>
 <body>
     <%@ include file="includes/header.jspf" %>
 
     <div class="container">
-        <form action="blog" method="get" class="search-form">
-            <input type="text" name="search" placeholder="搜索博客..." value="${searchKeyword}">
-            <button type="submit">搜索</button>
-        </form>
+        <h1 class="archive-title">博客归档</h1>
+        
         <c:if test="${empty blogs}">
             <div class="empty-state">
                 <div class="empty-icon">📝</div>
-                <c:choose>
-                    <c:when test="${not empty searchKeyword}">
-                        <h3 class="empty-title">未找到结果</h3>
-                        <p class="empty-message">没有找到与 "${searchKeyword}" 匹配的博客。</p>
-                    </c:when>
-                    <c:otherwise>
-                        <h3 class="empty-title">暂无博客文章</h3>
-                        <p class="empty-message">快去发布你的第一篇博客，分享你的想法吧！</p>
-                    </c:otherwise>
-                </c:choose>
-                <a href="new-blog.jsp" class="btn btn-primary">创建第一篇博客</a>
+                <h3 class="empty-title">暂无博客文章</h3>
+                <p class="empty-message">暂无历史博客文章。</p>
+                <a href="new-blog.jsp" class="btn btn-primary">创建博客</a>
             </div>
         </c:if>
 
